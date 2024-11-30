@@ -11,7 +11,7 @@ export interface ToDoItem {
 }
 
 // const url = 'http://localhost:3000'
-const url = 'http://20.198.218.49:5000'
+const url = 'http://20.198.218.49:5000' // should use env var for more security!
 
 export const useTodoListStore = defineStore('todoList', {
   state: () => ({
@@ -47,31 +47,26 @@ export const useTodoListStore = defineStore('todoList', {
         console.error(error)
       }
     },
-    async editTodo(itemId: number) {
-      const editedTodo = prompt('Edit the todo: ')
-      if (editedTodo !== null && editedTodo.trim() !== '') {
-        try {
-          axios
-            .patch(`${url}/todo/${itemId}`, {
-              description: editedTodo,
-            })
-            .then(() => {
-              this.todoList[itemId].description = editedTodo
-              Promise.resolve()
-            })
-            .then(async () => {
-              await this.fetchTodo()
-            })
-        } catch (error) {
-          alert('Failed to update descipription')
-          console.error(error)
-        }
+    async editTodo(itemId: number, editedTodo: string) {
+      try {
+        await axios.patch(`${url}/todo/${itemId}`, {
+          description: editedTodo,
+        })
+        await this.fetchTodo()
+      } catch (error) {
+        alert('Failed to update descipription')
+        console.error(error)
       }
     },
-    editNote(itemId: number) {
-      const editedNote = prompt('Edit the note: ')
-      if (editedNote !== null && editedNote.trim() !== '') {
-        this.todoList[itemId].note = editedNote
+    async editNote(itemId: number, editedNote: string) {
+      try {
+        await axios.patch(`${url}/todo/${itemId}`, {
+          note: editedNote,
+        })
+        await this.fetchTodo()
+      } catch (error) {
+        alert('Failed to update note')
+        console.error(error)
       }
     },
     async toggleCompleted(idToFind: number) {
