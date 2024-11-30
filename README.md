@@ -30,7 +30,11 @@ The app made with [VueJS](vuejs.org) for client side and [NestJS](nestjs.com) fo
   + Still handly actions e.g. build/push/pull process during deployment (take time)
  
 ## Improvement (Personal perspective)
-- Add auth (authentication + authorization) to protect the application for paid users.
+- Add auth (authentication + authorization) to protect the application for paid users
+- User could create a collection of tasks (categorized with purpose or lables)
+  + Collaboration between users with sharing feature
+  + Include web-socket for real time interacting between users on the same collection
+- Repsonesive UI for different device.
 - Could be separate into mono-repo (using Nx)
 - Include automation testing (Playright)
 - Create the complete CI/CD pipeline for development
