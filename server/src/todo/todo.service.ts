@@ -8,8 +8,8 @@ import { TodoItem } from './interface/todoItem.interface';
 export class TodoService {
   constructor(private readonly imMemService: InMemService) {}
 
-  create(createTodoDto: CreateTodoDto) {
-    return this.imMemService.createTodo(createTodoDto);
+  async create(createTodoDto: CreateTodoDto) {
+    return await this.imMemService.createTodo(createTodoDto);
   }
 
   findAll(): TodoItem[] {
