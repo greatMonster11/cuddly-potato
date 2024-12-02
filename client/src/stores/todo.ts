@@ -2,16 +2,16 @@ import { defineStore } from 'pinia'
 import axios from 'axios'
 
 export interface ToDoItem {
-  id?: number
+  id: number
   description: string
   isCompleted: boolean
   note?: string
-  created?: Date
-  modified?: Date
+  created: Date
+  modified: Date
 }
 
-// const url = 'http://localhost:3000'
-const url = 'http://20.198.218.49:5000' // should use env var for more security!
+const url = 'http://localhost:3000'
+// const url = 'http://20.198.218.49:5000' // should use env var for more security!
 
 export const useTodoListStore = defineStore('todoList', {
   state: () => ({
@@ -34,7 +34,7 @@ export const useTodoListStore = defineStore('todoList', {
             await this.fetchTodo()
           })
       } catch (error) {
-        alert('Failed at creating Todo')
+        // alert('Failed at creating Todo')
         console.error(error)
       }
     },
@@ -43,7 +43,7 @@ export const useTodoListStore = defineStore('todoList', {
         await axios.delete(`${url}/todo/${itemID}`)
         await this.fetchTodo()
       } catch (error) {
-        alert('Failed at creating Todo')
+        // alert('Failed at creating Todo')
         console.error(error)
       }
     },
@@ -54,7 +54,7 @@ export const useTodoListStore = defineStore('todoList', {
         })
         await this.fetchTodo()
       } catch (error) {
-        alert('Failed to update descipription')
+        // alert('Failed to update descipription')
         console.error(error)
       }
     },
@@ -65,7 +65,7 @@ export const useTodoListStore = defineStore('todoList', {
         })
         await this.fetchTodo()
       } catch (error) {
-        alert('Failed to update note')
+        // alert('Failed to update note')
         console.error(error)
       }
     },
@@ -86,7 +86,7 @@ export const useTodoListStore = defineStore('todoList', {
             })
         } catch (error) {
           todo.isCompleted = todo?.isCompleted
-          alert('Failed to update todo')
+          // alert('Failed to update todo')
           console.error(error)
         }
       }
@@ -96,7 +96,7 @@ export const useTodoListStore = defineStore('todoList', {
         const data = await axios.get(`${url}/todo`)
         this.todoList = data.data
       } catch (error) {
-        alert(error)
+        // alert(error)
         console.error(error)
       }
     },
