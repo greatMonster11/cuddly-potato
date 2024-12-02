@@ -1,8 +1,8 @@
 <script lang="ts">
-import { ref } from 'vue'
+import { ref, defineComponent } from 'vue'
 import { useTodoListStore } from '@/stores/todo'
 
-export default {
+export default defineComponent({
   props: {
     userRole: {
       type: String,
@@ -30,7 +30,7 @@ export default {
 
     return { isPaidUser, todo, note, addItemAndClear, store }
   },
-}
+})
 </script>
 
 <template>
