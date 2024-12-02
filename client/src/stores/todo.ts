@@ -10,8 +10,8 @@ export interface ToDoItem {
   modified: Date
 }
 
-const url = 'http://localhost:3000'
-// const url = 'http://20.198.218.49:5000' // should use env var for more security!
+// const url = 'http://localhost:3000'
+const url = 'http://20.198.218.49:5000' // should use env var for more security!
 
 export const useTodoListStore = defineStore('todoList', {
   state: () => ({
