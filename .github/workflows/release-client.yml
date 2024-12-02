@@ -69,9 +69,7 @@ jobs:
         IMAGE_NAME: ghcr.io/greatmonster11/cuddly-potato/todo-client
         TAG: ${{ steps.image_tag.outputs.IMAGE_TAG }}
       run: |
-        docker buildx build \
-          --tag ${IMAGE_NAME}:${TAG} \
-          -f Dockerfile
+        docker buildx build -t ${IMAGE_NAME}:${TAG} .
     -
       name: Push Docker image to registry
       env:
