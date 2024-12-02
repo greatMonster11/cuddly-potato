@@ -1,15 +1,6 @@
-import {
-  IsBoolean,
-  IsDate,
-  IsNumber,
-  IsOptional,
-  IsString,
-} from 'class-validator';
+import { IsBoolean, IsOptional, IsString } from 'class-validator';
 
 export class CreateTodoDto {
-  @IsNumber()
-  id: number;
-
   @IsString()
   description: string;
 
@@ -19,10 +10,4 @@ export class CreateTodoDto {
 
   @IsBoolean()
   isCompleted: boolean;
-
-  @IsDate()
-  created: Date;
-
-  @IsDate()
-  modified: Date;
 }

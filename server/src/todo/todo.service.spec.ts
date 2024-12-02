@@ -1,12 +1,13 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { TodoService } from './todo.service';
+import { InMemService } from '../in-mem/in-mem.service';
 
 describe('TodoService', () => {
   let service: TodoService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [TodoService],
+      providers: [TodoService, InMemService],
     }).compile();
 
     service = module.get<TodoService>(TodoService);
