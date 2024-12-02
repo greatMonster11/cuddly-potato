@@ -1,3 +1,5 @@
+[![Client CI](https://github.com/greatMonster11/cuddly-potato/actions/workflows/client-ci.yml/badge.svg)](https://github.com/greatMonster11/cuddly-potato/actions/workflows/client-ci.yml)
+[![Server CI](https://github.com/greatMonster11/cuddly-potato/actions/workflows/server.ci.yml/badge.svg)](https://github.com/greatMonster11/cuddly-potato/actions/workflows/server.ci.yml)
 ## cuddly-potato
 Todo app. Give the user ability to creating and managing task with simple UI 
 <br />
