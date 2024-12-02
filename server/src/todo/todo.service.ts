@@ -8,27 +8,27 @@ import { TodoItem } from './interface/todoItem.interface';
 export class TodoService {
   constructor(private readonly imMemService: InMemService) {}
 
-  async create(createTodoDto: CreateTodoDto) {
+  async create(createTodoDto: CreateTodoDto): Promise<TodoItem> {
     return await this.imMemService.createTodo(createTodoDto);
   }
 
-  findAll(): TodoItem[] {
-    return this.imMemService.getAll();
+  async findAll(): Promise<TodoItem[]> {
+    return await this.imMemService.getAll();
   }
 
   findOne(id: number): TodoItem | string | null {
     return `the single record with id ${id}`;
   }
 
-  update(id: number, updateTodoDto: UpdateTodoDto) {
-    return this.imMemService.updateTodo(id, updateTodoDto as any);
+  async update(id: number, updateTodoDto: UpdateTodoDto) {
+    return await this.imMemService.updateTodo(id, updateTodoDto as any);
   }
 
-  remove(id: number) {
-    this.imMemService.deleteTodo(id);
+  async remove(id: number) {
+    return await this.imMemService.deleteTodo(id);
   }
 
-  cleanUp() {
-    this.imMemService.cleanUp();
+  async cleanUp() {
+    return await this.imMemService.cleanUp();
   }
 }
