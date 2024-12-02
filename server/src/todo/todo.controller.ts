@@ -21,8 +21,8 @@ export class TodoController {
   }
 
   @Get()
-  findAll() {
-    return this.todoService.findAll();
+  async findAll() {
+    return await this.todoService.findAll();
   }
 
   @Get(':id')
@@ -31,17 +31,17 @@ export class TodoController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateTodoDto: UpdateTodoDto) {
-    return this.todoService.update(+id, updateTodoDto);
+  async update(@Param('id') id: string, @Body() updateTodoDto: UpdateTodoDto) {
+    return await this.todoService.update(+id, updateTodoDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.todoService.remove(+id);
+  async remove(@Param('id') id: string) {
+    return await this.todoService.remove(+id);
   }
 
   @Delete('')
-  cleanUp() {
-    return this.todoService.cleanUp();
+  async cleanUp() {
+    return await this.todoService.cleanUp();
   }
 }

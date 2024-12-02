@@ -11,11 +11,13 @@ export class InMemService {
     this.id = 0;
   }
 
-  getAll(): TodoItem[] {
-    return this.todo;
+  async getAll(): Promise<TodoItem[]> {
+    return new Promise((res) => {
+      res(this.todo);
+    });
   }
 
-  createTodo(todo: TodoInput) {
+  createTodo(todo: TodoInput): Promise<TodoItem> {
     return new Promise((res) => {
       this.todo.push({
         ...todo,
@@ -29,29 +31,35 @@ export class InMemService {
     });
   }
 
-  updateTodo(id: number, todo: TodoInput) {
-    this.todo[id] = {
-      ...this.todo[id],
-      ...todo,
-      modified: new Date(),
-    };
+  async updateTodo(id: number, todo: TodoInput): Promise<TodoItem> {
+    return new Promise((res) => {
+      this.todo[id] = {
+        ...this.todo[id],
+        ...todo,
+        modified: new Date(),
+      };
 
-    return this.todo[id];
-  }
-
-  deleteTodo(id: number) {
-    const removed = this.todo[id];
-    this.todo = this.todo.filter((obj: TodoItem) => {
-      return obj.id !== id;
+      res(this.todo[id]);
     });
-
-    return removed;
   }
 
-  cleanUp() {
-    this.todo = [];
-    this.id = 0;
+  async deleteTodo(id: number): Promise<TodoItem | null> {
+    return new Promise((res) => {
+      const removed = this.todo[id];
+      this.todo = this.todo.filter((obj: TodoItem) => {
+        return obj.id !== id;
+      });
 
-    return this.todo;
+      res(removed);
+    });
+  }
+
+  async cleanUp(): Promise<TodoItem[]> {
+    return new Promise((res) => {
+      this.todo = [];
+      this.id = 0;
+
+      res(this.todo);
+    });
   }
 }
