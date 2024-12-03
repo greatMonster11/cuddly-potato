@@ -71,6 +71,10 @@ jobs:
       run: |
         docker buildx build -t ${IMAGE_NAME}:${TAG} .
     -
+      name: Check exist of the created image
+      run: |
+        docker images
+    -
       name: Push Docker image to registry
       env:
         IMAGE_NAME: ghcr.io/greatmonster11/cuddly-potato/todo-client
